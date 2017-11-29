@@ -177,6 +177,8 @@ return [
         SON\Providers\EventServiceProvider::class,
         SON\Providers\RouteServiceProvider::class,
 
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class
+
     ],
 
     /*
@@ -225,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class
 
     ],
 
