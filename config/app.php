@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'LaraEdu'),
 
     /*
     |--------------------------------------------------------------------------
@@ -234,6 +234,8 @@ return [
         'Table' => Bootstrapper\Facades\Table::class,
         'Button' => Bootstrapper\Facades\Button::class,
         'Icon' => Bootstrapper\Facades\Icon::class,
+        'Navbar' => Bootstrapper\Facades\Navbar::class,
+        'Navigation' => Bootstrapper\Facades\Navigation::class,
 
     ],
 
