@@ -42,18 +42,22 @@
                 $navbar->withContent(Navigation::links($arrayLinks))
                        ->withContent(Navigation::links($arrayLinksRight)->right());
 
+                $formLogout = FormBuilder::plain([
+                    'id' => 'form-logout',
+                    'url' => route('logout'),
+                    'method' => 'POST',
+                    'style' => 'display:none'
+                ]);
+
             }
 
-            $formLogout = FormBuilder::plain([
-                'id' => 'form-logout',
-                'url' => route('logout'),
-                'method' => 'POST',
-                'style' => 'display:none'
-            ]);
         @endphp
 
         {!! $navbar !!}
-        {!! form($formLogout) !!}
+
+        @if(Auth::check())
+            {!! form($formLogout) !!}
+        @endif
 
         @if(Session::has('message'))
             {!! Alert::success(Session::get('message'))->close() !!}
