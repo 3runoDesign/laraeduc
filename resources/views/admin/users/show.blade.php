@@ -43,6 +43,10 @@
                         <th scope="row">e-Mail</th>
                         <td>{{$user->email}}</td>
                     </tr>
+                    <tr>
+                        <th scope="row">Matrícula</th>
+                        <td>{{$user->enrolment}}</td>
+                    </tr>
 
 
                 </tbody>
