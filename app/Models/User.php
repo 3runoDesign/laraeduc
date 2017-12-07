@@ -80,7 +80,7 @@ class User extends Authenticatable implements TableInterface
             case 'ID':
                 return $this->id;
             case 'Nome':
-                return $this->name;
+                  return $this->name;
             case 'Email':
                 return $this->email;
             case 'Matrícula':
