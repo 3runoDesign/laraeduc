@@ -16,6 +16,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@user.com',
             'enrolment' => 100000
         ])->each(function (User $user) {
+            $profile = factory(\SON\Models\UserProfile::class)->make();
+            $user->profile()->create($profile->toArray());
             User::assingRole($user, User::ROLE_ADMIN);
             $user->save();
         });
@@ -23,6 +25,8 @@ class UsersTableSeeder extends Seeder
         // 10 Professores
         factory(User::class, 10)->create()->each(function (User $user) {
             if (!$user->userable) {
+                $profile = factory(\SON\Models\UserProfile::class)->make();
+                $user->profile()->create($profile->toArray());
                 User::assingRole($user, User::ROLE_TEACHER);
                 $user->save();
             }
@@ -31,6 +35,8 @@ class UsersTableSeeder extends Seeder
         // 10 Estudandes
         factory(User::class, 10)->create()->each(function (User $user) {
             if (!$user->userable) {
+                $profile = factory(\SON\Models\UserProfile::class)->make();
+                $user->profile()->create($profile->toArray());
                 User::assingRole($user, User::ROLE_STUDENT);
                 $user->save();
             }
