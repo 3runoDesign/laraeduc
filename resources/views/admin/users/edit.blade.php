@@ -3,13 +3,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h3>Editar usuário</h3>
-            {!!
-                form($form->add('edit', 'submit', [
-                    'attr' => ['class' => 'btn btn-primary btn-block'],
-                    'label' => Icon::floppySaved() . ' Salvar'
-                ]))
-            !!}
+
+            @component('admin.users.tabs-component', ['user' => $form->getModel()])
+                <div class="col-md-12">
+                    <h3>Editar usuário</h3>
+                    {!!
+                        form($form->add('edit', 'submit', [
+                            'attr' => ['class' => 'btn btn-primary btn-block'],
+                            'label' => Icon::floppySaved() . ' Salvar'
+                        ]))
+                    !!}
+                </div>
+            @endcomponent
         </div>
     </div>
 @endsection()
