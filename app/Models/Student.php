@@ -2,16 +2,11 @@
 
 namespace SON\Models;
 
-use App\Traits\UserableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    use UserableTrait;
-
-
-    public function __construct()
-    {
-        $this->user();
+    public function user() {
+        return $this->morphOne(User::class, 'userable');
     }
 }
