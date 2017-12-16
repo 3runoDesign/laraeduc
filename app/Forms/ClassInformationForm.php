@@ -9,7 +9,7 @@ class ClassInformationForm extends Form
 {
     public function buildForm()
     {
-        $formatDate = function($value){
+        $formatDate = function($value) {
             return ($value && $value instanceof Carbon) ? $value->format('Y-m-d') : $value;
         };
 
