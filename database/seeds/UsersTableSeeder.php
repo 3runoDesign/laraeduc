@@ -16,26 +16,24 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@user.com',
             'enrolment' => 100000
         ])->each(function (User $user) {
-            User::assingRole($user, User::ROLE_TEACHER);
+            User::assingRole($user, User::ROLE_ADMIN);
             $user->save();
         });
 
-        // 10 Professores
-        factory(User::class, 10)->create()->each(function (User $user) {
-            if (!$user->userable) {
-                User::assingRole($user, User::ROLE_TEACHER);
-                User::assignEnrolment(new User(), User::ROLE_TEACHER);
-                $user->save();
-            }
-        });
-
-        // 10 Estudandes
-        factory(User::class, 10)->create()->each(function (User $user) {
-            if (!$user->userable) {
-                User::assingRole($user, User::ROLE_STUDENT);
-                User::assignEnrolment(new User(), User::ROLE_STUDENT);
-                $user->save();
-            }
-        });
+//        // 10 Professores
+//        factory(User::class, 10)->create()->each(function (User $user) {
+//            if (!$user->userable) {
+//                User::assingRole($user, User::ROLE_TEACHER);
+//                $user->save();
+//            }
+//        });
+//
+//        // 10 Estudandes
+//        factory(User::class, 10)->create()->each(function (User $user) {
+//            if (!$user->userable) {
+//                User::assingRole($user, User::ROLE_STUDENT);
+//                $user->save();
+//            }
+//        });
     }
 }

@@ -43,23 +43,19 @@ class LoginController extends Controller
     {
         $data = $request->only($this->username(), 'password');
         $usernameKey = $this->usernameKey();
-
-        if ($usernameKey != $this->username()) {
-            $data[$usernameKey] = $data[$this->username()];
-            $data['userable_type'] = Admin::class;
-            unset($data[$this->username()]);
-        }
-
+        $data[$usernameKey] = $data[$this->username()];
+        $data['userable_type'] = Admin::class;
+        unset($data[$this->username()]);
         return $data;
     }
 
-    protected function usernameKey() {
+    protected function usernameKey(){
         $email = \Request::get($this->username());
         $validator = \Validator::make([
             'email' => $email
         ], ['email' => 'email']);
 
-        return $validator->fails() ? 'enrolment' : 'email';
+        return $validator->fails() ? 'enrolment': 'email';
     }
 
     public function username()
