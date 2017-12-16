@@ -18,10 +18,14 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
     Auth::routes();
 
+    Route::group(['prefix' => 'users', 'as' => 'admin.users.'], function () {
+        Route::name('settings.edit')->get('settings', 'Admin\UsersSettingsController@edit');
+        Route::name('settings.update')->put('settings', 'Admin\UsersSettingsController@update');
+    });
+
     Route::group([
         'namespace' => 'Admin\\',
         'as' => 'admin.',
-//        'middleware' => ['auth']
         'middleware' => ['auth', 'can:admin']
     ], function(){
 

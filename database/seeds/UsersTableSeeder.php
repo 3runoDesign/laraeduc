@@ -20,20 +20,20 @@ class UsersTableSeeder extends Seeder
             $user->save();
         });
 
-//        // 10 Professores
-//        factory(User::class, 10)->create()->each(function (User $user) {
-//            if (!$user->userable) {
-//                User::assingRole($user, User::ROLE_TEACHER);
-//                $user->save();
-//            }
-//        });
-//
-//        // 10 Estudandes
-//        factory(User::class, 10)->create()->each(function (User $user) {
-//            if (!$user->userable) {
-//                User::assingRole($user, User::ROLE_STUDENT);
-//                $user->save();
-//            }
-//        });
+        // 10 Professores
+        factory(User::class, 10)->create()->each(function (User $user) {
+            if (!$user->userable) {
+                User::assingRole($user, User::ROLE_TEACHER);
+                $user->save();
+            }
+        });
+
+        // 10 Estudandes
+        factory(User::class, 10)->create()->each(function (User $user) {
+            if (!$user->userable) {
+                User::assingRole($user, User::ROLE_STUDENT);
+                $user->save();
+            }
+        });
     }
 }
