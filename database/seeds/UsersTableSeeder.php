@@ -16,13 +16,12 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@user.com',
             'enrolment' => 100000
         ])->each(function (User $user) {
-            User::assingRole($user, User::ROLE_ADMIN);
+            User::assingRole($user, User::ROLE_TEACHER);
             $user->save();
         });
 
-        factory(User::class, 10)->create([
-            'enrolment' => str_random(10)
-        ])->each(function (User $user) {
+        // 10 Professores
+        factory(User::class, 10)->create()->each(function (User $user) {
             if (!$user->userable) {
                 User::assingRole($user, User::ROLE_TEACHER);
                 User::assignEnrolment(new User(), User::ROLE_TEACHER);
@@ -30,6 +29,7 @@ class UsersTableSeeder extends Seeder
             }
         });
 
+        // 10 Estudandes
         factory(User::class, 10)->create()->each(function (User $user) {
             if (!$user->userable) {
                 User::assingRole($user, User::ROLE_STUDENT);
