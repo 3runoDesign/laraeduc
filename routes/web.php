@@ -43,6 +43,10 @@ Route::prefix('admin')->group(function(){
         });
 
         Route::resource('users', 'UsersController');
+        Route::resource('subjects', 'SubjectsController');
+        Route::resource('class_informations', 'ClassInformationsController');
+
+        Route::resource('users', 'UsersController');
     });
 
 });
