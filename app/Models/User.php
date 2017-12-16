@@ -32,8 +32,13 @@ class User extends Authenticatable implements TableInterface
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    public function profile() {
+        return $this->hasOne(UserProfile::class)->withDefault();
+    }
 
     public function userable() {
         return $this->morphTo();
