@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-group">
-            <lable class="control-label">Selecionar estudante</lable>
+            <label class="control-label">Selecionar estudante</label>
             <select name="students" class="form-control"></select>
         </div>
 
@@ -13,14 +13,27 @@
             </tr>
             </thead>
             <tbody>
-
+                <tr v-for="student in students">
+                    <td>Excluir</td>
+                    <td>{{ student.user.name }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
+    import store from '../../store/store';
     export default {
-
+        props: ['classInformation'],
+        computed: {
+            students() {
+                return store.state.classStudent.students;
+            }
+        },
+        mounted() {
+            // dispatch('classStudent/query', this.classInformation);
+            store.dispatch('classStudent/query', this.classInformation);
+        }
     }
 </script>
